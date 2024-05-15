@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -83,8 +81,7 @@ class _MyAppState extends State<MyApp> {
     locales = dateTimeSymbolMap()
         .keys
         .cast<String>()
-        .map((String k) => Locale(
-            k.split('_')[0], k.split('_').length > 1 ? k.split('_')[1] : null))
+        .map((String k) => Locale(k.split('_')[0], k.split('_').length > 1 ? k.split('_')[1] : null))
         .toList();
     super.initState();
   }
@@ -220,7 +217,7 @@ class ExampleTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Text(title, style: Theme.of(context).textTheme.headline6),
+      child: Text(title, style: Theme.of(context).textTheme.titleLarge),
     );
   }
 }
@@ -230,12 +227,10 @@ class ExampleTitle extends StatelessWidget {
 /// callback works.
 class SimpleExampleWeekendsStatic extends StatefulWidget {
   @override
-  _SimpleExampleWeekendsStaticState createState() =>
-      _SimpleExampleWeekendsStaticState();
+  _SimpleExampleWeekendsStaticState createState() => _SimpleExampleWeekendsStaticState();
 }
 
-class _SimpleExampleWeekendsStaticState
-    extends State<SimpleExampleWeekendsStatic> {
+class _SimpleExampleWeekendsStaticState extends State<SimpleExampleWeekendsStatic> {
   int? lastTapped;
 
   @override
@@ -246,10 +241,8 @@ class _SimpleExampleWeekendsStaticState
         ExampleTitle('onChanged callback'),
         Text(
             'The selected days are Saturday and Sunday. The onChanged function will be called with the index of the day that the user has tapped on.'),
-        Text(
-            'It is up to the user of this library to handle the taps and keep track of the changes'),
-        Text(
-            'In accordance with ISO 8601 a week starts with Monday, which has the value of 1. Sunday == 7'),
+        Text('It is up to the user of this library to handle the taps and keep track of the changes'),
+        Text('In accordance with ISO 8601 a week starts with Monday, which has the value of 1. Sunday == 7'),
         Text(
           lastTapped == null
               ? 'onChanged callback was not yet called'
@@ -313,8 +306,7 @@ class _DisabledExampleState extends State<DisabledExample> {
 
 class SelectedDaysUpdateExample extends StatefulWidget {
   @override
-  _SelectedDaysUpdateExampleState createState() =>
-      _SelectedDaysUpdateExampleState();
+  _SelectedDaysUpdateExampleState createState() => _SelectedDaysUpdateExampleState();
 }
 
 class _SelectedDaysUpdateExampleState extends State<SelectedDaysUpdateExample> {
@@ -329,8 +321,7 @@ class _SelectedDaysUpdateExampleState extends State<SelectedDaysUpdateExample> {
         Text(
             'When the user taps on a day, toggle the state! You can use stateful widgets, or any other methods for managing your state.'),
         // Using v == true, as some values could be null!
-        Text(
-            'The days that are currently selected are: ${valuesToEnglishDays(values, true)}.'),
+        Text('The days that are currently selected are: ${valuesToEnglishDays(values, true)}.'),
         WeekdaySelector(
           selectedFillColor: Colors.indigo,
           onChanged: (v) {
@@ -465,10 +456,8 @@ class _CurrentLocaleExampleState extends State<CurrentLocaleExample> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        ExampleTitle(
-            'Current locale: $locale (${textDirection == TextDirection.rtl ? "RTL" : "LTR"})'),
-        Text(
-            'The WeekdaySelector is built to support multiple languages, locales in one application.'),
+        ExampleTitle('Current locale: $locale (${textDirection == TextDirection.rtl ? "RTL" : "LTR"})'),
+        Text('The WeekdaySelector is built to support multiple languages, locales in one application.'),
         Text(
           'Just pass the WeekdaySelector the "weekdays", "shortWeekdays", and "firstDayOfWeek" parameters. '
           'You can use the intl package to get these parameters.',
@@ -499,9 +488,7 @@ TextDirection getTextDirection(Locale locale) {
   // See GlobalWidgetsLocalizations
   // TODO: there must be a better way to figure out whether a locale is RTL or LTR
   const rtlLanguages = ['ar', 'fa', 'he', 'ps', 'sd', 'ur'];
-  return rtlLanguages.contains(locale.languageCode)
-      ? TextDirection.rtl
-      : TextDirection.ltr;
+  return rtlLanguages.contains(locale.languageCode) ? TextDirection.rtl : TextDirection.ltr;
 }
 
 class FirstDayOfWeekDateTime extends StatelessWidget {
@@ -510,8 +497,7 @@ class FirstDayOfWeekDateTime extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Text(
-            'Use the "firstDayOfWeek" property to change which day is the first day of the week.'),
+        Text('Use the "firstDayOfWeek" property to change which day is the first day of the week.'),
         Text('Starting with Monday'),
         WeekdaySelector(
           onChanged: print,
@@ -652,8 +638,7 @@ const valuesSaturdaySunday = <bool>[
 
 class SaneDefaultThemeExample extends StatefulWidget {
   @override
-  _SaneDefaultThemeExampleState createState() =>
-      _SaneDefaultThemeExampleState();
+  _SaneDefaultThemeExampleState createState() => _SaneDefaultThemeExampleState();
 }
 
 class _SaneDefaultThemeExampleState extends State<SaneDefaultThemeExample> {
@@ -667,8 +652,7 @@ class _SaneDefaultThemeExampleState extends State<SaneDefaultThemeExample> {
         ExampleTitle('Sane defaults'),
         Text(
             'The colors will be picked based on your current theme, so the weekday selector will match your theme without you having to set every color on your own.'),
-        Text(
-            'Notice how the colors of the picked days will match the material theme of your app!'),
+        Text('Notice how the colors of the picked days will match the material theme of your app!'),
         WeekdaySelector(
           onChanged: (v) {
             printIntAsDay(v);
@@ -736,8 +720,7 @@ class _CustomShapesExampleState extends State<CustomShapesExample> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         ExampleTitle('Shapes: Any ShapeBorder works'),
-        Text(
-            'Any "ShapeBorder" will do, and you can set the selected, enabled, and disabled shapes differently'),
+        Text('Any "ShapeBorder" will do, and you can set the selected, enabled, and disabled shapes differently'),
         WeekdaySelector(
           onChanged: (v) {
             printIntAsDay(v);
@@ -805,8 +788,7 @@ class InheritedThemeExample extends StatelessWidget {
             onChanged: printIntAsDay,
             values: List.filled(7, true),
           ),
-          Text(
-              'You can still overwrite every value! Let\'s make it green by passing the "selectedFillColor" value!'),
+          Text('You can still overwrite every value! Let\'s make it green by passing the "selectedFillColor" value!'),
           WeekdaySelector(
             onChanged: printIntAsDay,
             values: List.filled(7, true),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'weekday_selector_theme.dart';
@@ -254,8 +253,7 @@ class WeekdaySelector extends StatelessWidget {
       text: shortWeekdays[arrayIndex],
       selected: values[arrayIndex],
       tooltip: weekdays[arrayIndex],
-      onPressed:
-          values[arrayIndex] == null ? null : () => onChanged!(dateTimeDay),
+      onPressed: values[arrayIndex] == null ? null : () => onChanged!(dateTimeDay),
       enableFeedback: enableFeedback,
       color: color,
       selectedColor: selectedColor,
@@ -287,11 +285,8 @@ class WeekdaySelector extends StatelessWidget {
     final displayedIndices = displayedDays.map((e) => e % 7);
     return Row(
       textDirection: textDirection,
-      children: days
-          .where((d) => displayedIndices.contains(d))
-          .map((i) => i + firstDayOfWeek)
-          .map(buildButtonWith)
-          .toList(),
+      children:
+          days.where((d) => displayedIndices.contains(d)).map((i) => i + firstDayOfWeek).map(buildButtonWith).toList(),
     );
   }
 }
@@ -455,35 +450,22 @@ class WeekdayButton extends StatelessWidget {
     final currentEnableFeedback = enableFeedback ?? true;
     // Based on the official material toggle buttons
     if (onPressed != null && selected == false) {
-      currentColor = color ??
-          weekdayTheme?.color ??
-          theme.buttonTheme.colorScheme!.onSurface;
-      currentFillColor = fillColor ??
-          weekdayTheme?.fillColor ??
-          theme.buttonTheme.colorScheme!.surface;
+      currentColor = color ?? weekdayTheme?.color ?? theme.buttonTheme.colorScheme!.onSurface;
+      currentFillColor = fillColor ?? weekdayTheme?.fillColor ?? theme.buttonTheme.colorScheme!.surface;
       currentElevation = elevation ?? weekdayTheme?.elevation ?? 1;
-      currentFocusColor = focusColor ??
-          weekdayTheme?.focusColor ??
-          theme.buttonTheme.colorScheme!.onSurface.withOpacity(0.12);
-      currentHoverColor = hoverColor ??
-          weekdayTheme?.hoverColor ??
-          theme.buttonTheme.colorScheme!.onSurface.withOpacity(0.04);
-      currentSplashColor = splashColor ??
-          weekdayTheme?.splashColor ??
-          theme.buttonTheme.colorScheme!.onSurface.withOpacity(0.16);
-      currentTextStyle = textStyle ??
-          weekdayTheme?.textStyle ??
-          theme.textTheme.bodyText2!.copyWith(color: currentColor);
+      currentFocusColor =
+          focusColor ?? weekdayTheme?.focusColor ?? theme.buttonTheme.colorScheme!.onSurface.withOpacity(0.12);
+      currentHoverColor =
+          hoverColor ?? weekdayTheme?.hoverColor ?? theme.buttonTheme.colorScheme!.onSurface.withOpacity(0.04);
+      currentSplashColor =
+          splashColor ?? weekdayTheme?.splashColor ?? theme.buttonTheme.colorScheme!.onSurface.withOpacity(0.16);
+      currentTextStyle =
+          textStyle ?? weekdayTheme?.textStyle ?? theme.textTheme.bodyMedium!.copyWith(color: currentColor);
       currentShape = shape;
     } else if (onPressed != null && selected == true) {
-      currentColor = selectedColor ??
-          weekdayTheme?.selectedColor ??
-          theme.buttonTheme.colorScheme!.onPrimary;
-      currentFillColor = selectedFillColor ??
-          weekdayTheme?.selectedFillColor ??
-          theme.buttonTheme.colorScheme!.primary;
-      currentElevation =
-          selectedElevation ?? weekdayTheme?.selectedElevation ?? 2;
+      currentColor = selectedColor ?? weekdayTheme?.selectedColor ?? theme.buttonTheme.colorScheme!.onPrimary;
+      currentFillColor = selectedFillColor ?? weekdayTheme?.selectedFillColor ?? theme.buttonTheme.colorScheme!.primary;
+      currentElevation = selectedElevation ?? weekdayTheme?.selectedElevation ?? 2;
       currentFocusColor = selectedFocusColor ??
           weekdayTheme?.selectedFocusColor ??
           theme.buttonTheme.colorScheme!.primary.withOpacity(0.12);
@@ -496,20 +478,16 @@ class WeekdayButton extends StatelessWidget {
       currentShape = selectedShape ?? weekdayTheme?.selectedShape;
       currentTextStyle = selectedTextStyle ??
           weekdayTheme?.selectedTextStyle ??
-          theme.textTheme.bodyText2!.copyWith(color: currentColor);
+          theme.textTheme.bodyMedium!.copyWith(color: currentColor);
     } else {
-      currentDisabledElevation =
-          disabledElevation ?? weekdayTheme?.disabledElevation ?? 0;
-      currentColor = disabledColor ??
-          weekdayTheme?.disabledColor ??
-          theme.colorScheme.onSurface.withOpacity(0.38);
-      currentFillColor = disabledFillColor ??
-          weekdayTheme?.disabledFillColor ??
-          theme.colorScheme.onSurface.withOpacity(0.05);
+      currentDisabledElevation = disabledElevation ?? weekdayTheme?.disabledElevation ?? 0;
+      currentColor = disabledColor ?? weekdayTheme?.disabledColor ?? theme.colorScheme.onSurface.withOpacity(0.38);
+      currentFillColor =
+          disabledFillColor ?? weekdayTheme?.disabledFillColor ?? theme.colorScheme.onSurface.withOpacity(0.05);
       currentShape = disabledShape ?? weekdayTheme?.disabledShape;
       currentTextStyle = disabledTextStyle ??
           weekdayTheme?.disabledTextStyle ??
-          theme.textTheme.bodyText2!.copyWith(color: currentColor);
+          theme.textTheme.bodyMedium!.copyWith(color: currentColor);
     }
 
     return Expanded(
